@@ -1,3 +1,3 @@
 #Quora Clone - Minimal Version of Quora in Rails
 
--> Made with love for Quoara :heart: <-
+_Made with love for Quoara_ :heart
