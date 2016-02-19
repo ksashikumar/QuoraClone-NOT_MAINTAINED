@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_to root_url
+      redirect_to user
     else
       flash.now.alert = "Invalid Username and Password"
       render "new"

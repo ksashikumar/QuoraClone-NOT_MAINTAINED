@@ -100,3 +100,15 @@ footer {
     }
   }
 }
+
+.round-image-100 {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    img { width: 100% }
+}

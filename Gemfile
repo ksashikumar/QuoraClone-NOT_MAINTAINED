@@ -10,6 +10,8 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem "bcrypt-ruby", :require => "bcrypt"
 
+gem 'paperclip', '~> 4.1'
+
 gem 'jbuilder'
 gem 'jquery-rails', '2.0.2'
 

@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, 
-                  :password, :password_confirmation
+                  :password, :password_confirmation, :avatar, :avatar_file_name
 
   has_secure_password
 
@@ -27,6 +27,14 @@ class User < ActiveRecord::Base
              uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100"},
+                    :url  => "/assets/users/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
+
+  validates_attachment_presence :avatar
+  validates_attachment_size :avatar, :less_than => 5.megabytes
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
   private
 
