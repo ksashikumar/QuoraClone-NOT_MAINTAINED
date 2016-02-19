@@ -12,10 +12,10 @@ rvm:
   - jruby-19mode
 
 before_script:
-  - mysql -e 'create database QuoraClone_test;'
+  - mysql -u root -e 'create database QuoraClone_test;'
 
 before_install:
-  - mysql -e "create database IF NOT EXISTS test;" -uroot
+  - mysql -u root -e "create database IF NOT EXISTS test;" -uroot
 
 services:
   - mysql
