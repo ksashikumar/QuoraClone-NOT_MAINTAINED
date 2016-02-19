@@ -4,15 +4,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+def create
     @user = User.new(params[:user])
-    
     if @user.save
-      redirect_do root_url, :notice => "Signed Up!"
+      sign_in @user
+      flash[:success] = "Welcome to QuoraClone!"
+      redirect_to root_url
     else
-      render "new"
+      render 'new'
     end
-
   end
 
 end
