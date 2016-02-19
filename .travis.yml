@@ -3,6 +3,7 @@ before_install: gem install bundler
 
 gemfile:
   - Gemfile
+
 language: ruby
 
 rvm:
@@ -10,4 +11,22 @@ rvm:
   - jruby-18mode
   - jruby-19mode
 
-sudo: false
+before_script:
+  - mysql -e 'create database QuoraClone_test;'
+
+before_install:
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
+
+services:
+  - mysql
+
+dist: trusty
+
+sudo: required
+
+addons:
+  apt:
+    packages:
+    - mysql-server-5.5
+    - mysql-client-core-5.5
+    - mysql-client-5.5
