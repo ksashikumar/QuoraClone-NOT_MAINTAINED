@@ -8,7 +8,7 @@
 
   * Add Question, Answer, Relationship, Upvotes, Downvotes, Comments Model
   * Edit User 
-  * API : api.<appurl>.com
+  * API : api.appurl.com
   * OAuth
   * Search using Redis
   * Deploy to EC2
