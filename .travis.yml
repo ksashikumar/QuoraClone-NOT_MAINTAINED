@@ -8,8 +8,6 @@ language: ruby
 
 rvm:
   - 2.1.5
-  - jruby-18mode
-  - jruby-19mode
 
 before_script:
   - mysql -u root -e 'create database QuoraClone_test;'
