@@ -1,0 +1,13 @@
+bundler_args: --without development
+before_install: gem install bundler
+
+gemfile:
+  - Gemfile
+language: ruby
+
+rvm:
+  - 1.26.11
+  - jruby-18mode
+  - jruby-19mode
+
+sudo: false

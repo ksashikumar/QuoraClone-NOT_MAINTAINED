@@ -1,34 +1,18 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, 
+  attr_accessible :first_name, :last_name, :email,
                   :password, :password_confirmation
+  has_secure_password
 
-  attr_accessor :password
+  before_save { |user| user.email = email.downcase }
+
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  before_save :encrypt_password
-
-  validates_presence_of :first_name
-  validates_presence_of :last_name
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniquness_of :email
-
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-
-    if user && user.password_hash == 
-    BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
-
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-
+  validates :email, presence:   true,
+                    format:     { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
 end
