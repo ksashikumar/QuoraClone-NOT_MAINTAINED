@@ -6,7 +6,7 @@ gemfile:
 language: ruby
 
 rvm:
-  - 1.26.11
+  - 2.1.5
   - jruby-18mode
   - jruby-19mode
 
