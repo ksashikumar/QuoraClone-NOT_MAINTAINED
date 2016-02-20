@@ -15,6 +15,18 @@ gem 'paperclip', '~> 4.1'
 gem 'jbuilder'
 gem 'jquery-rails', '2.0.2'
 
+gem 'figaro'
+gem 'puma'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
