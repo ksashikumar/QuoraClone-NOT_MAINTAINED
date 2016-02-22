@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160222075658) do
+ActiveRecord::Schema.define(:version => 20160222095542) do
+
+  create_table "answers", :force => true do |t|
+    t.text     "body"
+    t.integer  "question_id"
+    t.integer  "votes"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["answer_id"], :name => "index_comments_on_answer_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.string   "title"
@@ -22,6 +45,26 @@ ActiveRecord::Schema.define(:version => 20160222075658) do
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
+  create_table "topic_questions", :force => true do |t|
+    t.integer  "topic_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "topic_questions", ["question_id"], :name => "index_topic_questions_on_question_id"
+  add_index "topic_questions", ["topic_id"], :name => "index_topic_questions_on_topic_id"
+
+  create_table "topic_users", :force => true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "topic_users", ["topic_id"], :name => "index_topic_users_on_topic_id"
+  add_index "topic_users", ["user_id"], :name => "index_topic_users_on_user_id"
 
   create_table "topics", :force => true do |t|
     t.string   "title"
