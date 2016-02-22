@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, 
                   :password, :password_confirmation, :avatar, :avatar_file_name
 
+
+  has_many :questions
+  has_many :answers
+  has_many :comments
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

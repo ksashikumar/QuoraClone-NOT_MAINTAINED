@@ -1,3 +1,7 @@
+
+server 'ec2-52-25-122-207.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{web app db}
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

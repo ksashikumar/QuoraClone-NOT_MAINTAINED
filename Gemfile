@@ -18,6 +18,8 @@ gem 'jquery-rails', '2.0.2'
 gem 'figaro'
 gem 'puma'
 
+gem 'passenger'
+
 group :development do
   gem 'capistrano'
   gem 'capistrano3-puma'
