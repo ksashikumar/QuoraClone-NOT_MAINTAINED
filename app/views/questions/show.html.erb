@@ -1,0 +1,10 @@
+<% provide(:title, "Question") %>
+<div class="container">
+    <%= @question.user.first_name %> asked <br>
+    <div class = "title">
+      <%= @question.title %> <br>
+    </div>
+    <div class = "description">
+      <%= @question.description %>
+    </div>
+</div>

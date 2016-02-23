@@ -125,3 +125,39 @@ footer {
     img { width: 100% }
 }
 
+/* Question */
+
+.title {
+  font-size: 2em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  word-wrap: break-word;
+  line-height: 30px;
+}
+
+.description {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  font-weight: normal;
+  line-height: 25px;
+  word-wrap: break-word;
+  color: $grayLight;
+}
+
+.questions {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter
+    }
+  }
+}
+
+

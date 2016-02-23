@@ -1,0 +1,21 @@
+<% provide(:title, "Questions") %>
+
+<h1>Questions for you</h1>
+
+<div class = "container">
+
+  <ul class = "questions">
+  <li>
+      <% @questions.each do |question| %>
+        <%= question.user.first_name %> asked <br>
+        <div class = "title">
+          <%= question.title %> <br>
+        </div>
+        <div class = "description">
+          <%= question.description %>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+
+</div>

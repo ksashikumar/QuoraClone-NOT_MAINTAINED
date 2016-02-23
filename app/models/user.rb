@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
                   :password, :password_confirmation, :avatar, :avatar_file_name
 
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :answers
   has_many :comments
   
