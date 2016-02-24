@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_filter :signed_in_user, only: [:create, :destroy, :new]
+  before_filter :signed_in_user, only: [:create, :destroy, :new, :index, :show]
   
   def index
     @questions = Question.all
@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
 
     @question.user_id = current_user.id
-    
+
     if @question.save
       flash[:success] = "Question Added Successfully!"
       redirect_to root_url
@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
 
   def edit

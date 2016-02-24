@@ -7,9 +7,10 @@
   <ul class = "questions">
   <li>
       <% @questions.each do |question| %>
-        <%= question.user.first_name %> asked <br>
+        <%= link_to question.user.first_name, question.user %> 
+        asked on <%= question.created_at %><br>
         <div class = "title">
-          <%= question.title %> <br>
+          <%= link_to question.title, question %> <br>
         </div>
         <div class = "description">
           <%= question.description %>

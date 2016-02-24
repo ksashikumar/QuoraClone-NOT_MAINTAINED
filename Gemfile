@@ -20,6 +20,8 @@ gem 'puma'
 
 gem 'passenger'
 
+gem 'byebug'
+
 group :development do
   gem 'capistrano'
   gem 'capistrano3-puma'

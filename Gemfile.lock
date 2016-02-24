@@ -36,6 +36,7 @@ GEM
     bootstrap-will_paginate (0.0.6)
       will_paginate
     builder (3.0.4)
+    byebug (6.0.2)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -220,6 +221,7 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
+  byebug
   capistrano
   capistrano-bundler
   capistrano-passenger

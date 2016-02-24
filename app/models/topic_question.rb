@@ -1,5 +1,5 @@
 class TopicQuestion < ActiveRecord::Base
-  belongs_to :topic
-  belongs_to :question
-  #attr_accessible :title, :body
+  belongs_to :topic, inverse_of: :topic_question
+  belongs_to :question, inverse_of: :topic_question
+  validates :topic, :question, presence: true
 end

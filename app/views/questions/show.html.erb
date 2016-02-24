@@ -1,10 +1,31 @@
 <% provide(:title, "Question") %>
 <div class="container">
-    <%= @question.user.first_name %> asked <br>
+    <%= link_to @question.user.first_name, @question.user %> 
+    asked on <%= @question.created_at %><br>
     <div class = "title">
       <%= @question.title %> <br>
     </div>
     <div class = "description">
       <%= @question.description %>
     </div>
+
+    <%= form_for([@question, @question.answers.build]) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <p>
+        <%= f.label :body, "Submit your Answer" %>
+        <%= f.text_area :body, rows: 10 %>
+      </p>
+
+      <%= f.submit "Submit Answer", :class => "btn btn-large btn-primary" %>
+
+    <% end %>
+
+    <% @question.answers.each do |answer| %>
+      <div class = "description">
+        <%= answer.user_id %> <br>
+        <%= answer.body %>
+        <br>
+      </div>
+    <% end %>
 </div>

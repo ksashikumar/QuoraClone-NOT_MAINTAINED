@@ -1,10 +1,16 @@
 QuoraClone::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end  
+  resources :user_relationships, only: [:create, :destroy]
   resources :sessions
-  resources :questions
-  resources :answers
-
+  resources :questions do
+    resources :answers
+  end
+  
   get "signup" => "users#new", :as => "signup"
   get "signin" => "sessions#new", :as => "signin"
 

@@ -16,9 +16,16 @@ class User < ActiveRecord::Base
 
 
   has_many :questions, dependent: :destroy
-  has_many :answers
+  has_many :answers, dependent: :destroy
   has_many :comments
-  
+  has_many :user_relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+
+  has_many :reverse_user_relationships, foreign_key: "followed_id",
+                                   class_name:  "UserRelationship",
+                                   dependent:   :destroy
+  has_many :followers, through: :reverse_user_relationships, source: :follower
+
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -40,6 +47,18 @@ class User < ActiveRecord::Base
   validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+
+  def following?(other_user)
+    user_relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    user_relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    user_relationships.find_by_followed_id(other_user.id).destroy
+  end
 
   private
 
